@@ -1,0 +1,1 @@
+{"version":3,"file":"fightEntity.js","sourceRoot":"","sources":["fightEntity.ts"],"names":["FightEntity","FightEntity.constructor"],"mappings":";;;;;;AACA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAEzC;IAAiCA,+BAAaA;IAC1CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAcLD,kBAACA;AAADA,CAACA,AAjBD,EAAiC,MAAM,CAAC,MAAM,EAiB7C;AAjBY,mBAAW,cAiBvB,CAAA;AAEU,sBAAc,GAAG,OAAO,CAAC"}

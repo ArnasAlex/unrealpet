@@ -1,0 +1,66 @@
+<div class="duel">
+    <div data-bind="visible: isVisible" class="container">
+        <div class="arena">
+            <div class="opponent">
+                <div class="player-container">
+                    <div class="picture"></div>
+                </div>
+                <div class="skill skill-0 unknown"><i class="fa fa-circle-thin"></i></div>
+                <div class="skill skill-1 unknown"><i class="fa fa-circle-thin"></i></div>
+                <div class="skill skill-2 unknown"><i class="fa fa-circle-thin"></i></div>
+                <div class="skill skill-3 unknown"><i class="fa fa-circle-thin"></i></div>
+                <div class="bar hp">
+                    <div class="background"></div>
+                    <div class="numbers"><i class="fa fa-heart"></i></div>
+                </div>
+                <div class="bar energy">
+                    <div class="background"></div>
+                    <div class="numbers"><i class="fa fa-bolt"></i></div>
+                </div>
+            </div>
+            <div class="player">
+                <div class="logo-background"></div>
+                <div class="logo"></div>
+                <div class="player-container">
+                    <div class="picture"></div>
+                </div>
+                <div class="skill-border skill-0"></div>
+                <div class="skill-border skill-1"></div>
+                <div class="skill-border skill-2"></div>
+                <div class="skill-border skill-3"></div>
+                <div class="skills">
+                    <!--<div data-bind="css: cssClasses, popover: getDescriptionOptions()" class="skill">-->
+                        <!--<i data-bind="css: icon" class="fa skill-icon"></i>-->
+                        <!--<span data-bind="text: energy" class="badge energy"></span>-->
+                    <!--</div>-->
+                </div>
+                <div class="bar hp">
+                    <div class="background"></div>
+                    <div class="numbers"><i class="fa fa-heart"></i></div>
+                </div>
+                <div class="bar energy">
+                    <div data-bind="style: {width: energyPercent()}" class="background"></div>
+                    <div class="numbers"><i class="fa fa-bolt"></i> <span data-bind="text: energyText"></span></div>
+                </div>
+                <button data-bind="click: hide" class="btn btn-success pull-right">
+                    <i class="fa fa-chevron-circle-left"></i> <span data-bind="mlt: 'game_quit'"></span>
+                </button>
+            </div>
+
+            <div class="end-menu-container">
+                <div class="end-menu-overlay"></div>
+                <div class="end-menu ${backgroundClass}">
+                    <div class="picture-container">
+                        <div class="picture"></div>
+                    </div>
+                    <div class="text">
+                        <i class="fa fa-check"></i>
+                        <i class="fa fa-remove"></i>
+                        <span></span>
+                    </div>
+                    <button class="btn btn-success" data-bind="mlt: 'control_ok'"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

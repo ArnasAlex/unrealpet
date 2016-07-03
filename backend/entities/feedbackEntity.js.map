@@ -1,0 +1,1 @@
+{"version":3,"file":"feedbackEntity.js","sourceRoot":"","sources":["feedbackEntity.ts"],"names":["FeedbackEntity","FeedbackEntity.constructor"],"mappings":";;;;;;AACA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAEzC;IAAoCA,kCAAaA;IAC7CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAQLD,qBAACA;AAADA,CAACA,AAXD,EAAoC,MAAM,CAAC,MAAM,EAWhD;AAXY,sBAAc,iBAW1B,CAAA;AAEU,sBAAc,GAAG,UAAU,CAAC"}

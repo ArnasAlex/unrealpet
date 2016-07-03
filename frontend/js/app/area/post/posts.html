@@ -1,0 +1,156 @@
+<div class="container posts">
+    <div data-bind="visible: !wrongUrl()">
+        <div data-bind="with: activities" class="row activities">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><i class="fa fa-bell-o"></i> <span data-bind="mlt: 'posts_recent_activities'"></span></h3>
+                </div>
+                <div class="panel-body">
+                    <div data-bind="visible: list().length > 0">
+                        <ul data-bind="foreach: list" class="list-group">
+                            <button type="button" data-bind="click: $parent.goToActivity" class="list-group-item">
+                                <div data-bind="if: $data.isMyPost">
+                                    <div class="pull-right">
+                                        <span data-bind="visible: paws" class="badge paw-background">
+                                            +<span data-bind="text: paws"></span>
+                                            <i class="fa fa-paw"></i>
+                                        </span>
+                                        <span data-bind="visible: comments" class="badge comment-background">
+                                            +<span data-bind="text: comments"></span>
+                                            <i class="fa fa-comments"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div data-bind="if: $data.isOthersPost">
+                                    <div class="pull-right">
+                                        <span data-bind="visible: comments" class="badge others-post-comment-background">
+                                            +<span data-bind="text: comments"></span>
+                                            <i class="fa fa-commenting-o"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="title"><h4><i class="fa fa-check"></i> <span data-bind="text: title"></span></h4></div>
+                                <div class="clearfix"></div>
+                            </button>
+                        </ul>
+                    </div>
+                    <div data-bind="visible: list().length == 0">
+                        <h3 data-bind="mlt: 'posts_empty_recent_activities'" class="no-activities"></h3>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a data-bind="click: clear" class="btn btn-default pull-right"><i class="fa fa-eraser"></i> <span data-bind="mlt: 'posts_clear_activities'"></span></a>
+                    <a data-bind="click: refresh" class="btn btn-default pull-left"><i class="fa fa-refresh"></i> <span></span></a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="with: details" class="row details">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3><span data-bind="text: typeText, visible: typeText"></span> <span data-bind="text: name"></span></h3>
+                </div>
+                <div class="panel-body">
+                    <div data-bind="visible: $parent.isMainPictureShown">
+                        <div data-bind="visible: mainPictureUrl">
+                            <img data-bind="attr: {src: mainPictureUrl}" class="img-responsive img-rounded center-block"/>
+                        </div>
+                        <div data-bind="visible: !mainPictureUrl" class="text-center info">
+                            <div data-bind="visible: $parent.isOwnerViewing()" class="text-center">
+                                <div><h3 data-bind="mlt: 'posts_upload_main_picture'"></h3></div>
+                                <div>
+                                    <a href="#account" class="btn btn-info btn-lg">
+                                        <i class="fa fa-user"></i>
+                                        <span data-bind='mlt: "posts_settings"'></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div data-bind="visible: !$parent.isOwnerViewing()" class="text-center">
+                                <div><h3 data-bind="mlt: 'posts_pet_has_no_main_picture'"></h3></div>
+                                <div><div class="pet-type pet-type-other center-block"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-bind="visible: !$parent.isMainPictureShown()" class="vote">
+                        <div class="game">
+                            <div data-bind="visible: gamePictureUrl" class="player">
+                                <div data-bind="style: {'background-image': gamePictureUrl}" class="image"></div>
+                            </div>
+                            <div data-bind="visible: !gamePictureUrl" class="text-center info">
+                                <div data-bind="visible: $parent.isOwnerViewing()" class="text-center">
+                                    <div><h3 data-bind="mlt: 'posts_start_playing_game'"></h3></div>
+                                    <div>
+                                        <a href="#game" class="btn btn-info btn-lg">
+                                            <i class="fa fa-play"></i>
+                                            <span data-bind='mlt: "posts_goto_game"'></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: !$parent.isOwnerViewing()" class="text-center">
+                                    <div><h3 data-bind="mlt: 'posts_pet_not_playing_game'"></h3></div>
+                                    <div><div class="pet-type pet-type-other center-block"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row picture-buttons">
+                        <div data-bind="css: {active: $parent.isMainPictureShown}" class="col-xs-6 main-picture">
+                            <button data-bind="click: $parent.mainPictureButtonClick, mlt: 'posts_main_picture'" class="btn btn-success"></button>
+                        </div>
+                        <div data-bind="css: {active: !$parent.isMainPictureShown()}" class="col-xs-6 game-picture">
+                            <button data-bind="click: $parent.gamePictureButtonClick, mlt: 'posts_game_picture'" class="btn btn-info">Game Picture</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="my-collection">
+                        <span data-bind="mlt: 'posts_my_collection'"></span>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-3">
+                            <a class="btn btn-success"><span data-bind="mlt: 'posts_upps'"></span> <i class="fa fa-trophy"></i> <span data-bind="text: upps" class="badge"></span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <a class="btn btn-info"><span data-bind="mlt: 'posts_posts'"></span> <i class="fa fa-camera"></i> <span data-bind="text: posts" class="badge"></span></span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <a class="btn btn-warning"><span data-bind="mlt: 'posts_paws'"></span> <i class="fa fa-paw"></i> <span data-bind="text: paws" class="badge"></span></a>
+                        </div>
+                        <div class="col-xs-6 col-sm-3">
+                            <a class="btn btn-warning"> <span data-bind="mlt: 'posts_comments'"></span> <i class="fa fa-comments"></i> <span data-bind="text: comments" class="badge"></span></a>
+                        </div>
+                    </div>
+                    <div class="about-me">
+                        <div class="about-me-logo col-fixed-60 pull-left">
+                            <img data-bind="visible: logoUrl, attr: {src: logoUrl}" class="img-rounded img-logo" src="" />
+                        </div>
+                        <div class="about-me-title col-offset-60">
+                            <div data-bind="mlt: 'posts_about_me'">About me</div>
+                            <div data-bind="text: about"data></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-bind="with: details" class="text-center">
+            <div data-bind="visible: posts == 0">
+                <h3 data-bind="mlt: 'posts_no_posts_added_yet'"></h3>
+                <div data-bind="visible: $parent.isOwnerViewing">
+                    <a href="#addpost" class="btn btn-info btn-lg">
+                        <i class="fa fa-plus"></i>
+                        <span data-bind='mlt: "home_add_post"'></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <post-search-grid params="{options: gridOptions}"></post-search-grid>
+    </div>
+    <div data-bind="visible: wrongUrl" class="text-center">
+        <h3>
+            <span data-bind="mlt: 'posts_invalid_link'"></span> '<span data-bind="text: id"></span>'.
+        </h3>
+        <hr>
+        <a href="#" class="btn btn-info btn-lg"><i class="fa fa-home"></i> <span data-bind="mlt: 'menu_home'" ></span></a>
+    </div>
+</div>

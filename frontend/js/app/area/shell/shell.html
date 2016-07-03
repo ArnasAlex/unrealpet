@@ -1,0 +1,47 @@
+<div class="main-container ">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="nav" style="text-align: center">
+                <div class="btn-group pull-left">
+                    <button data-bind="with: selectedMenuItem" type="button" class="btn btn-success dropdown-toggle navbar-btn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa" data-bind="css: icon"></i>
+                        <span data-bind="mlt: buttonMlt"></span>
+                        <span class="caret"></span>
+                    </button>
+                    <ul data-bind="foreach: menuItems" class="dropdown-menu navbar-dropdown">
+                        <li data-bind="visible: visible">
+                            <a data-bind="click: click" href="javascript:void(0)">
+                                <i data-bind="css: icon" class="fa"></i>
+                                <span data-bind="mlt: buttonMlt"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#login" data-bind="visible: !user().isAuthenticated" class="btn btn-success navbar-btn pull-right navbar-collapse-text menu-login">
+                    <i class="fa fa-sign-in"></i>
+                    <span data-bind="mlt: 'menu_login'"></span>
+                </a>
+                <div class="pull-right">
+                    <a href="#addpost" data-bind="visible: user().isAuthenticated" class="btn btn-success navbar-btn navbar-collapse-text">
+                        <i class="fa fa-plus"></i>
+                        <span data-bind="mlt: 'menu_add_post'">Add Post</span>
+                    </a>
+                </div>
+                <div data-bind="click: titleClicked" class="navbar-title">
+                    <i class="fa fa-bolt"></i>
+                    Unreal
+                    <span style="color: orange;">Pet
+                        <i class="fa fa-paw" style="color: orange;"></i>
+                        <i data-bind="visible: hasActivities" class="fa fa-bell-o bell"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div data-bind="router: { cacheViews: false }"></div>
+    <div data-bind="compose:'core/components/modal/modal'"></div>
+    <div data-bind="compose:'core/components/alert/alert'"></div>
+    <div data-bind="compose:'core/components/feedback/feedback'"></div>
+</div>

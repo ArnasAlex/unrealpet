@@ -1,0 +1,19 @@
+// Use this as example file for environment variables. File should be in the same directory and named environment.json and remove this comment
+{
+  "env": 2,
+  "port": 80,
+  "ip": "127.0.0.1",
+  "host": "somedomain.com",
+  "socketPort": "80",
+  "uploadPath": "../uploads",
+  "bundle": true,
+  "google": {
+    "clientId": "someId",
+    "clientSecret": "someSecret"
+  },
+  "facebook": {
+    "clientId": "someId",
+    "clientSecret": "someSecret"
+  },
+  "mongoUrl": "mongodb://localhost/pet"
+}

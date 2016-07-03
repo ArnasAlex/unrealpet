@@ -1,0 +1,10 @@
+<div class="container">
+    <div>
+        <div>
+            <ul data-bind="foreach: tabs" class="nav nav-pills nav-justified">
+                <li data-bind="click: $parent.changeTab, css: {active: $parent.activeTab().id == id}" role="presentation"><a href="javascript:void(0)" data-bind="text: name"></a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-bind="compose: activeTab().moduleId"></div>
+</div>

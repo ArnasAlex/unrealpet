@@ -1,0 +1,10 @@
+node_modules/
+.idea/
+.tscache/
+uploads/
+frontend-built/
+build/environment.json
+build/deploy.json
+test/e2e/report/
+test/e2e/selenium/server.jar
+dump/

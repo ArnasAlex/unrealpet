@@ -1,0 +1,37 @@
+<div class="vote">
+    <div class="game row">
+        <div data-bind="visible: fightExist" class="panel">
+            <div class="panel-heading">
+                <div><i class="fa fa-bolt"></i> <span data-bind="mlt: 'game_which_more_unreal'"></span></div>
+            </div>
+            <div class="panel-body">
+                <div data-bind="with: player1" class="player">
+                    <div data-bind="click: $parent.chooseWinner, style: {'background-image': 'url(\'' + picture() + '\')' }" class="image"></div>
+                </div>
+                <div class="vs">VS</div>
+                <div data-bind="with: player2" class="player">
+                    <div data-bind="click: $parent.chooseWinner, style: {'background-image': 'url(\'' + picture() + '\')' }" class="image"></div>
+                </div>
+            </div>
+            <div data-bind="css: {'show-play-button': isPlayButtonVisible }" class="panel-footer">
+                <div class="play-button-container">
+                    <a class="btn btn-danger" href="#game">
+                        <i class="fa fa-gamepad"></i>
+                        <span data-bind="mlt: 'home_join_game'"></span></a>
+                </div>
+                <div class="energy">
+                    <div class="col-xs-12 bar">
+                        <div data-bind="style: {width: energyPercent() + '%'}" class="fill"></div>
+                        <div data-bind="style: {width: availableEnergyPercent() + '%'}" class="available"></div>
+                        <div class="text">
+                            <i class="fa fa-bolt"></i>
+                            <span data-bind="mlt: 'game_energy'"></span><span>: </span>
+                            <span data-bind="text: energyText"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

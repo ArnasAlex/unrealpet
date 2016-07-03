@@ -1,0 +1,443 @@
+.duel .container {
+    position: fixed;
+    z-index: 1040;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(50, 50, 50, 0.9);
+    top: 0;
+    left: 0;
+    padding: 10px;
+}
+
+.duel .arena {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    border-radius: 10px;
+    position: relative;
+    max-width: 970px;
+    border: 1px solid black;
+}
+
+.duel .opponent {
+    background-color: #8a8a8a;
+    height: 50%;
+    top: 0;
+    border-bottom: 1px solid black;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.duel .player {
+    background-color: #666666;
+    height: 50%;
+    bottom: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.duel .player-container {
+    width: 76px;
+    height: 76px;
+    left: 50%;
+    margin-left: -38px;
+    position: absolute;
+    border-radius: 5px;
+}
+
+.duel .player-container .picture {
+    width: 100%;
+    height: 100%;
+    background: no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    border: 2px solid #3e3e3e;
+}
+
+.duel .opponent .player-container {
+    top: 0;
+}
+
+.duel .player .player-container {
+    bottom: 0;
+}
+
+.duel .logo {
+    left: 50%;
+    top: 50%;
+    width: 74px;
+    height: 74px;
+    margin-left: -37px;
+    margin-top: -37px;
+    border-radius: 10px;
+    position: absolute;
+    background: #292929 url('../img/logo/logo72.png') no-repeat;
+    border: 1px solid orange;
+    opacity: 0.7;
+}
+
+.duel .logo.active {
+    box-shadow: inset 0px 0px 15px 5px #00aa00;
+}
+
+.duel .logo-background {
+    left: 50%;
+    top: 50%;
+    width: 74px;
+    height: 74px;
+    margin-left: -37px;
+    margin-top: -37px;
+    border-radius: 10px;
+    position: absolute;
+    background-color: #292929;
+    border: 1px solid orange;
+}
+
+.duel .skill, .duel .skill-border {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    border-radius: 5px;
+    text-align: center;
+    left: 50%;
+    padding-top: 3px;
+    border: 1px solid white;
+    z-index: 5;
+    font-size: 30px;
+}
+
+.duel .skill-icon {
+    font-size: 30px;
+    color: white;
+}
+
+.duel .skill-border {
+    z-index: 4;
+}
+
+.duel .player .skill, .duel .player .skill-border {
+    bottom: 25px;
+}
+
+.duel .opponent .skill, .duel .opponent .skill-border {
+    top: 25px;
+}
+
+.duel .skill-0 {
+    margin-left: -155px;
+}
+
+.duel .skill-1 {
+    margin-left: -95px;
+}
+
+.duel .skill-2 {
+    margin-left: 45px;
+}
+
+.duel .skill-3 {
+    margin-left: 105px;
+}
+
+.duel .skill.active {
+    box-shadow: 0px 0px 30px 5px #ddeb1e;
+    border-color: #ddeb1e;
+}
+
+.duel .skill.valid {
+    box-shadow: 0px 0px 30px 5px #38eb33;
+    border-color: #38eb33;
+}
+
+.duel .skill-description {
+    background-color: #3a3a3a;
+    color: white;
+    font-size: 13px;
+}
+
+.duel .skill-description .arrow:after{
+    border-top-color: #3a3a3a;
+}
+
+.duel .skill-description .title {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.duel .skill-description .picture {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.duel .skill-description .picture i {
+    font-size: 50px;
+    border: 1px solid white;
+    padding: 5px;
+    min-width: 60px;
+    border-radius: 5px;
+    color: orange;
+}
+
+.duel .skill-description .energy {
+    color: white;
+    background-color:orange;
+    font-size: 14px;
+}
+
+.duel .skill.damage {
+    background-color: #d9534f;
+}
+
+.duel .skill.neutral {
+    background-color: #6369d9;
+}
+
+.duel .skill.benefit {
+    background-color: #24c124;
+}
+
+.duel .skill.unknown {
+    background-color: #a5544e;
+}
+
+.duel .skill .energy {
+    position: absolute;
+    right: -2px;
+    top: -7px;
+    background-color: orange;
+    color: white;
+}
+
+.duel .bar {
+    height: 20px;
+    width: 120px;
+    text-align: center;
+    position: absolute;
+    border-radius: 3px;
+    border: 1px solid #4a4a4a;
+    color: white;
+    bottom: 2px;
+    left: 50%;
+}
+
+.duel .player .bar {
+    bottom: 2px;
+}
+
+.duel .opponent .bar {
+    top: 2px;
+}
+
+.duel .bar.hp {
+    background-color: #21c421;
+    margin-left: -160px;
+}
+
+.duel .bar.energy {
+    background-color: #ffc303;
+    margin-left: 40px;
+}
+
+@media (min-width: 768px){
+    .duel .bar {
+        width: 240px;
+    }
+
+    .duel .bar.hp {
+        margin-left: -280px;
+    }
+
+    .duel .skill-0 {
+        margin-left: -235px;
+    }
+
+    .duel .skill-1 {
+        margin-left: -135px;
+    }
+
+    .duel .skill-2 {
+        margin-left: 85px;
+    }
+
+    .duel .skill-3 {
+        margin-left: 185px;
+    }
+}
+
+.duel .bar .background {
+    border-radius: 3px;
+    height: 18px;
+    top: 0;
+    left: 0;
+}
+
+.duel .bar .numbers {
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.duel .bar.energy .background {
+    background-color: #ff7138;
+}
+
+.duel .bar.hp .background {
+    background-color: #188e18;
+}
+
+.duel .result {
+}
+
+.duel .result .opponent-score {
+    margin-top: -118px;
+}
+
+.duel .result .player-score {
+    margin-top: 45px;
+}
+
+.duel .damage-points {
+    font-size: 25px;
+    border-radius: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #d9534f;
+    color: white;
+    font-style: normal;
+}
+
+.duel .result .score {
+    border: 1px solid white;
+    border-radius: 10px;
+    display: none;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    min-width: 75px;
+    z-index: 10;
+    margin-left: -38px;
+}
+
+.duel .score.plus {
+    background-color: #00c500;
+}
+
+.duel .score.minus {
+    background-color: #d9534f;
+}
+
+.duel .score.zero {
+    background-color: #d9d855;
+}
+
+.duel .end-menu-container {
+    display: none;
+}
+
+.duel .end-menu {
+    display: none;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    background-color: #232323;
+    color: white;
+    padding: 10px 30px;
+    border-radius: 10px;
+    z-index: 100;
+    margin-left: -130px;
+    margin-top: -170px;
+}
+
+.duel .end-menu .text {
+    margin-bottom: 20px;
+    border: 2px solid white;
+    font-size: 20px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.duel .end-menu.won .text {
+    background-color: #009a00;
+}
+
+.duel .end-menu.lost .text {
+    background-color: #c11200;
+}
+
+.duel .end-menu .text i {
+    display: none;
+}
+
+.duel .end-menu.won .text i.fa-check {
+    display: inline-block;
+}
+
+.duel .end-menu.lost .text i.fa-remove {
+    display: inline-block;
+}
+
+.duel .end-menu .picture-container {
+    width: 200px;
+    height: 200px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 2px solid white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.duel .end-menu .picture {
+    width: 100%;
+    height: 100%;
+    background: no-repeat center center;
+    background-size: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.duel .end-menu .btn {
+    min-width: 100px;
+}
+
+.duel .end-menu-overlay {
+    display: none;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.duel .guess-winner-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    margin-left: -130px;
+    margin-top: -46px;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    display: none;
+}
+
+.duel .guess-winner-container div {
+    width: 100px;
+    float: left;
+}
+.duel .guess-winner-container div:first-child {
+    margin-right: 20px;
+}
+
+.duel .guess-winner-container div button {
+    width: 100%;
+    word-wrap: break-word;
+    height: 52px;
+    white-space: normal;
+}

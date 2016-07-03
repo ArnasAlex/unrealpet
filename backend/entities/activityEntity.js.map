@@ -1,0 +1,1 @@
+{"version":3,"file":"activityEntity.js","sourceRoot":"","sources":["activityEntity.ts"],"names":["ActivityEntity","ActivityEntity.constructor"],"mappings":";;;;;;AACA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAEzC;IAAoCA,kCAAaA;IAC7CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAULD,qBAACA;AAADA,CAACA,AAbD,EAAoC,MAAM,CAAC,MAAM,EAahD;AAbY,sBAAc,iBAa1B,CAAA;AAEU,sBAAc,GAAG,UAAU,CAAC"}

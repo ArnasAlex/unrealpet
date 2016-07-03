@@ -1,0 +1,48 @@
+<div class="row">
+    <div class="panel game-fights" id="game-fights">
+        <div class="panel-heading">
+            <i class="fa fa-certificate"></i> <span data-bind="mlt: 'game_fights'"></span>
+            <button data-bind="click: refresh" class="btn btn-default pull-left"><i class="fa fa-refresh"></i></button>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div data-bind="foreach: list" class="row">
+                <div class="fight-container col-xs-6 col-sm-4 col-md-3">
+                    <div data-bind="click: $parent.fightClick, css: getCss()" class="fight">
+                        <div data-bind="style: {'background-image': 'url(\'' + opponentPicture + '\')' }" class="image pull-left"></div>
+                        <div class="info">
+                            <div class="place">
+                                <div class="pull-left"><span><i class="fa fa-trophy"></i> <span data-bind="text: opponentPlace"></span></span></div>
+                                <div data-bind="text: timeAgo" class="pull-right"></div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="points">
+                                <div data-bind="visible: showResult">
+                                    <div>
+                                        <i data-bind="css: isWin ? 'fa-check' : 'fa-remove'" class="fa"></i>
+                                        <span data-bind="text: resultText"></span>
+                                    </div>
+                                    <div>
+                                        <span data-bind="text: pointsText"></span>
+                                    </div>
+                                </div>
+                                <div data-bind="visible: isUnopened">
+                                    <i class="fa fa-question"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="name">
+                            <span data-bind="text: opponentName"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <button data-bind="click: moreClick, visible: hasMore" class="btn btn-warning"><i class="fa fa-arrow-down"></i> <span data-bind="mlt: 'control_more'"></span></button>
+        </div>
+        <div data-bind="compose: {model: voteResultControl, view: 'area/game/arena/main'}"></div>
+    </div>
+</div>
+

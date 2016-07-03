@@ -1,0 +1,1 @@
+{"version":3,"file":"commentEntity.js","sourceRoot":"","sources":["commentEntity.ts"],"names":["CommentEntity","CommentEntity.constructor"],"mappings":";;;;;;AACA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAGzC;IAAmCA,iCAAaA;IAC5CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAQLD,oBAACA;AAADA,CAACA,AAXD,EAAmC,MAAM,CAAC,MAAM,EAW/C;AAXY,qBAAa,gBAWzB,CAAA"}

@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="row">
+        <div class="login">
+            <h3><span data-bind="mlt: 'login_please_login'"></span> <a href="#signup" data-bind="mlt: 'login_sign_up'" class="button-signup"></a></h3>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a href="/auth/facebook" class="btn btn-lg btn-primary btn-block"><i class="fa fa-facebook icon-fix"></i>Facebook</a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <a href="/auth/google" class="btn btn-lg btn-danger btn-block"><i class="fa fa-google icon-fix"></i>Google</a>
+                </div>
+            </div>
+
+            <div class="login-or">
+                <hr class="hr-or">
+                <span class="span-or" data-bind="mlt: 'login_or'"></span>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-xs-offset-3">
+                    <a data-bind="click: openEmailSection" href="javscript:void(0)" class="btn btn-lg btn-warning btn-block">
+                        <i class="fa fa-at icon-fix"></i><span data-bind="mlt: 'login_via_email'">Email</span>
+                    </a>
+                </div>
+            </div>
+            <form data-bind="showWithAnimation: {value: isEmailFormOpen, show: 'slideDown', hide: 'slideUp'}" class="login-form" role="form">
+                <div class="form-group" data-bind="validationElement: email">
+                    <label for="inputEmail" data-bind="mlt: 'login_email'"></label>
+                    <span class="pull-right help-block" data-bind="validationMessage: email"></span>
+                    <input type="text" data-bind="value: email" class="form-control" id="inputEmail">
+                </div>
+                <div class="form-group" data-bind="validationElement: password">
+                    <label for="inputPassword" data-bind="mlt: 'login_password'"></label>
+                    <span class="pull-right help-block" data-bind="validationMessage: password"></span>
+                    <input type="password" data-bind="value: password" class="form-control" id="inputPassword">
+                </div>
+                <div class="form-group has-error" data-bind="visible: serverError">
+                    <strong><span class="help-block" data-bind="text: serverError"></span></strong>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <button type="button" data-bind="click: login" class="btn btn-lg btn-success center-block button-login">
+                            <i class="fa fa-sign-in"></i>
+                            <span data-bind="mlt: 'login_login'"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </form>
+            <div class="form-group terms-and-privacy">
+                <span data-bind="mlt: 'login_agree_terms'"></span> <a href="#terms" data-bind="mlt: 'login_terms_and_privacy'"></a><span>.</span>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="login-img-container">
+                <!--<img src="img/loginface.png" class="login-img"/>-->
+            </div>
+        </div>
+
+    </div>
+</div>

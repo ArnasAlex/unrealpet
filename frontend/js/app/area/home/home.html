@@ -1,0 +1,49 @@
+<div class="container home">
+    <div class="top-section">
+        <div class="background"></div>
+        <div class="top-section-words">
+            <div class="row">
+                <div class="col-xs-6 text-right"><span data-bind="mlt: 'home_top_pet_photo'"></span> <i class="fa fa-camera"></i></div>
+                <div class="col-xs-6 text-left"><i class="fa fa-paw"></i> <span data-bind="mlt: 'home_top_collect_paws'"></span></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 text-right"><span data-bind="mlt: 'home_top_play_game'"></span> <i class="fa fa-gamepad"></i></div>
+                <div class="col-xs-6 text-left"><i class="fa fa-smile-o"></i> <span data-bind="mlt: 'home_top_have_fun'"></span></div>
+            </div>
+        </div>
+        <div data-bind="visible: topSection() == 1" class="text-center">
+            <div class="buttons">
+                <a href="#login" class="btn btn-success btn-lg">
+                    <i class="fa fa-sign-in"></i>
+                    <span data-bind="mlt: 'home_login'"></span>
+                </a>
+                <a href="#signup" class="btn btn-info btn-lg">
+                    <i class="fa fa-check"></i>
+                    <span data-bind="mlt: 'home_signup'"></span>
+                </a>
+            </div>
+        </div>
+        <div data-bind="visible: topSection() == 2" class="text-center top-container">
+            <div class="buttons">
+                <a href="#addpost" class="btn btn-info btn-lg">
+                    <i class="fa fa-plus"></i>
+                    <span data-bind='mlt: "home_add_post"'></span>
+                </a>
+            </div>
+        </div>
+        <div data-bind="visible: topSection() == 3" class="text-center">
+            <div class="buttons">
+                <a href="#account" class="btn btn-info btn-lg">
+                    <i class="fa fa-user"></i>
+                    <span data-bind='mlt: "home_settings"'></span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <vote-game params="{options: voteGameOptions}"></vote-game>
+
+    <div>
+        <post-search-grid params="{options: gridOptions}"></post-search-grid>
+    </div>
+</div>

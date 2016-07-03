@@ -1,0 +1,148 @@
+<div class="row post">
+    <div data-bind="with: data" class="panel panel-default">
+        <div class="panel-heading">
+            <div class="pull-right post-owner">
+                <div class="pull-right">
+                    <img data-bind="visible: ownerLogo, attr: {src: ownerLogo}" class="img-circle" src="" />
+                    <div data-bind="visible: !ownerLogo, css: petTypeClass" class="pet-type pet-type-with-background"></div>
+                </div>
+                <div class="pull-right owner-info">
+                    <span data-bind="text: ownerName" class="owner-name"></span>
+                    <br/>
+                    <span class="post-info">
+                        <span data-bind="visible: favs > 0">
+                            <span data-bind="text: favs"></span>
+                            <span data-bind="mlt: 'home_favs'"> favs</span>,
+                        </span>
+                        <span data-bind="text: date"></span>
+                    </span>
+                </div>
+            </div>
+
+            <span class="post-title"><span data-bind="text: title"></span></span>
+            <div class="clearfix"></div>
+        </div>
+        <div class="panel-body">
+            <div data-bind="if: type == 1 || type == 2" class="picture-container center-block">
+                <img data-bind="attr: {src: contentUrl}" class="img-responsive img-rounded center-block post-picture" />
+            </div>
+            <div data-bind="if: type == 3" class="picture-container center-block">
+                <div class='cover-container'>
+                    <div>
+                        <i class="fa fa-play-circle-o fa-5x"></i>
+                    </div>
+                    <img data-bind="attr: {src: coverUrl}" class="cover"/>
+                </div>
+                <video data-bind="attr: {poster: coverUrl}" preload="none" class="center-block" loop muted style="display:none">
+                    <source data-bind="attr: {src: contentUrl}" type="video/mp4">
+                    Your browser is too old to support video.
+                </video>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="row">
+                <div class="col-sm-7">
+                    <div data-bind="if: !$parent.container.canEdit, visible: topComment" class="pull-left top-comment">
+                        <div data-bind="text: topComment"></div>
+                    </div>
+                    <div data-bind="if: $parent.container.canEdit" class="pull-left">
+                        <button data-bind="click: $parent.container.edit" class="btn btn-warning"><i class="fa fa-pencil"></i> <span data-bind="mlt: 'control_edit'"></span></button>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="pull-right post-buttons">
+                        <div class="button-container pull-right">
+                            <button data-bind="click: $parent.container.toggleCommentsSection, css: {'btn-info': isCommentsOpen}" class="btn btn-default btn-info-hover comment-button">
+                                <i class="fa fa-comments-o fa-2x"></i>
+                                <span data-bind="if: unreadComments() != 0">
+                                    <span class="badge unread-comments">+<span data-bind="text: unreadComments"></span></span>
+                                </span>
+                                <span data-bind="text: comments" class="badge badge-corner"></span>
+                            </button>
+                        </div>
+                        <div class="button-container pull-right">
+                            <button data-bind="click: $parent.container.togglePostPaw, css: {'btn-warning': isPawed}" class="btn btn-default btn-warning-hover">
+                                <i class="fa fa-paw fa-2x"></i>
+                                <span data-bind="if: unviewedPaws() != 0">
+                                    <span class="badge unread-comments">+<span data-bind="text: unviewedPaws"></span></span>
+                                </span>
+                            </button>
+                            <span data-bind="text: paws" class="badge badge-corner"></span>
+                        </div>
+                        <div class="button-container pull-right">
+                            <a data-bind="attr: {href: facebookUrl}" target="_blank" class="btn btn-default facebook-button">
+                                <i class="fa fa-facebook fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div data-bind="if: isCommentsOpen">
+                <div class="comment-input-container">
+                    <div>
+                        <textarea data-bind="value: $parent.container.comment, placeholderMlt: 'home_comment_placeholder'" class="form-control" rows="3"></textarea>
+                        <div class="post-comment-button-container">
+                            <button data-bind="click: $parent.container.saveComment, mlt: 'home_post_comment' " class="btn btn-success"></button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="comments-container">
+                    <ul data-bind="foreach: $parent.container.comments" class="list-group">
+                        <li data-bind="css: {'comment-type-reply': isReply, 'comment-type-comment': !isReply}" class="list-group-item">
+                            <div>
+                                <div class="col-fixed-60 comment-owner-logo">
+                                    <img data-bind="visible: ownerLogo, attr: {src: ownerLogo}" src="" class="img-rounded comment-owner-picture"/>
+                                    <div data-bind="visible: !ownerLogo, css: petTypeClass" class="pet-type pet-type-with-background"></div>
+                                </div>
+                                <div class="col-offset-60">
+                                    <div>
+                                        <span data-bind="text: ownerName" class="comment-owner-name"></span>
+                                        <span data-bind="text: date" class="comment-date"></span>
+                                        <span data-bind="visible: paws() > 0" class="comment-paws">
+                                            <span>[</span>
+                                            <span>
+                                                <span data-bind="text: paws"></span>
+                                                <span data-bind="mlt: 'home_paws'"></span>
+                                            </span>
+                                            <span>]</span>
+                                        </span>
+                                    </div>
+                                    <div class="comment-text"><span data-bind="text: text"></span></div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="links pull-right">
+                                    <a data-bind="click: $parents[1].container.toggleCommentReplySection, visible: !isReply, css: {'has-reply': replies() > 0}" class="reply" href="javascript:void(0)">
+                                        <span data-bind="mlt: 'home_comment_reply'"></span> <span class="reply-count">[ <span data-bind="text: replies"></span> ]</span>
+                                    </a>
+                                    <a data-bind="click: $parents[1].container.toggleCommentPaw, css: {pawed: isPawed}" class="paw" href="javascript:void(0)"><i class="fa fa-paw"></i></a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div data-bind="if: isReplyOpen">
+                                <div class="comment-input-reply-container">
+                                    <textarea data-bind="value: $parents[1].container.reply, placeholderMlt: 'home_comment_reply_placeholder'" class="form-control" rows="3"></textarea>
+                                    <div class="reply-button-container">
+                                        <button data-bind="click: $parents[1].container.saveCommentReply, mlt: 'home_comment_reply'" class="btn btn-success"></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-bind="if: isLastReply">
+                                <div class="text-center">
+                                    <button data-bind="click: $parents[1].container.hideCommentReplySection" class="btn btn-default"><i class="fa fa-arrow-up"></i> <span data-bind="mlt: 'home_coments_hide_replies'"></span></button>
+                                    <button data-bind="click: $parents[1].container.showMoreReplies, visible: $parents[1].container.hasMoreReplies" class="btn btn-primary"><i class="fa fa-arrow-down"></i> <span data-bind="mlt: 'home_coments_show_more'"></span></button>
+                                    <button data-bind="click: $parents[1].container.goToReply" class="btn btn-success"><i class="fa fa-arrow-up"></i> <span data-bind="mlt: 'home_comment_goto_reply'"></span></button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <button data-bind="click: $parent.container.hideCommentsSection, visible: $parent.container.comments().length > 0" class="btn btn-default"><i class="fa fa-arrow-up"></i> <span data-bind="mlt: 'home_coments_hide_replies'"></span></button>
+                        <button data-bind="click: $parent.container.showMoreComments, visible: $parent.container.hasMoreComments" class="btn btn-primary"><i class="fa fa-arrow-down"></i> <span data-bind="mlt: 'home_coments_show_more'"></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

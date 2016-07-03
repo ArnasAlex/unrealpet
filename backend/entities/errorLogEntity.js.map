@@ -1,0 +1,1 @@
+{"version":3,"file":"errorLogEntity.js","sourceRoot":"","sources":["errorLogEntity.ts"],"names":["ErrorLogEntity","ErrorLogEntity.constructor"],"mappings":";;;;;;AACA,AADA,6CAA6C;AAC7C,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAEzC;IAAoCA,kCAAaA;IAC7CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAMLD,qBAACA;AAADA,CAACA,AATD,EAAoC,MAAM,CAAC,MAAM,EAShD;AATY,sBAAc,iBAS1B,CAAA;AAEU,sBAAc,GAAG,UAAU,CAAC"}

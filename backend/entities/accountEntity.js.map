@@ -1,0 +1,1 @@
+{"version":3,"file":"accountEntity.js","sourceRoot":"","sources":["accountEntity.ts"],"names":["AccountEntity","AccountEntity.constructor"],"mappings":";;;;;;AAAA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAEzC;IAAmCA,iCAAaA;IAC5CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAkBLD,oBAACA;AAADA,CAACA,AArBD,EAAmC,MAAM,CAAC,MAAM,EAqB/C;AArBY,qBAAa,gBAqBzB,CAAA;AAEU,sBAAc,GAAG,SAAS,CAAC;AAYrC"}

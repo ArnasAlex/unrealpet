@@ -1,0 +1,31 @@
+<div class="container post-area">
+    <div class="post-container">
+        <post params="{options: {data: postData, container: $data}}"></post>
+    </div>
+</div>
+<div class="modal fade" id="postEditModal" tabindex="-1" role="dialog">
+    <div data-bind="with: editModal" class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel" data-bind="mlt: 'post_edit_header'"></h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label data-bind="mlt: 'post_edit_title'" class="control-label col-sm-2"></label>
+                        <div class="col-sm-10">
+                            <input data-bind="value: title" type="text" class="form-control"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger pull-left" data-dismiss="modal" data-bind="mlt: 'control_delete', click: remove"></button>
+                <button type="button" class="btn btn-primary pull-rigth" data-dismiss="modal" data-bind="mlt: 'control_save', click: save"></button>
+                <button type="button" class="btn btn-default pull-right" data-dismiss="modal" data-bind="mlt: 'control_cancel'"></button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

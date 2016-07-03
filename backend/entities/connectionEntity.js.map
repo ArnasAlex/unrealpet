@@ -1,0 +1,1 @@
+{"version":3,"file":"connectionEntity.js","sourceRoot":"","sources":["connectionEntity.ts"],"names":["ConnectionEntity","ConnectionEntity.constructor"],"mappings":";;;;;;AACA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAGzC;IAAsCA,oCAAaA;IAC/CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAQLD,uBAACA;AAADA,CAACA,AAXD,EAAsC,MAAM,CAAC,MAAM,EAWlD;AAXY,wBAAgB,mBAW5B,CAAA;AAEU,sBAAc,GAAG,YAAY,CAAC"}

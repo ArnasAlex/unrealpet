@@ -1,0 +1,6 @@
+// Use this as example file for deploy configuration. File should be in the same directory and named deploy.json and remove this comment
+{
+  "gitDir": "/home/UnrealPet/Repository",
+  "versionsDir": "/home/UnrealPet/Versions",
+  "serviceName": "unrealpet"
+}

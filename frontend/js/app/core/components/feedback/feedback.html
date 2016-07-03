@@ -1,0 +1,27 @@
+<div class="modal fade" id="feedback" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" data-bind="mlt: 'feedback_title'"></h4>
+            </div>
+            <div class="modal-body">
+                <div data-bind="mlt: 'feedback_msg'"></div>
+                <div class="mood">
+                    <div data-bind="mlt: 'feedback_pick_mood'"></div>
+                    <div>
+                        <i data-bind="css: {active: isHappy}, click: happy" class="fa fa-smile-o"></i>
+                        <i data-bind="css: {active: !isHappy()}, click: sad" class="fa fa-frown-o"></i>
+                    </div>
+                </div>
+                <div class="message">
+                    <textarea data-bind="value: message" rows="5"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" data-bind="mlt: 'control_cancel'"></button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" data-bind="mlt: 'control_send', click: save"></button>
+            </div>
+        </div>
+    </div>
+</div>

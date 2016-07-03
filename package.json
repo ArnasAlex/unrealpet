@@ -1,0 +1,43 @@
+{
+  "name": "UnrealPet",
+  "version": "1.1.8",
+  "private": true,
+  "main": "backend/server.js",
+  "description": "Unreal Pet",
+  "author": {
+    "name": "Arnas",
+    "email": ""
+  },
+  "dependencies": {
+    "async": "^1.4.2",
+    "body-parser": "^1.13.3",
+    "compression": "^1.6.0",
+    "connect-mongo": "^0.8.2",
+    "express": "4.9.0",
+    "express-session": "^1.11.3",
+    "fluent-ffmpeg": "^2.0.1",
+    "forcedomain": "^0.6.0",
+    "fs-extra": "^0.26.3",
+    "gm": "^1.21.1",
+    "grunt": "0.4.5",
+    "grunt-execute": "^0.2.2",
+    "grunt-jasmine-nodejs": "^1.4.3",
+    "grunt-nightwatch": "^0.5.2",
+    "grunt-ts": "^4.1.2",
+    "lodash": "^3.10.0",
+    "mkdirp": "^0.5.1",
+    "mongodb": "^2.0.40",
+    "multer": "^1.0.3",
+    "ncp": "^2.0.0",
+    "nightwatch": "^0.8.13",
+    "node_hash": "^0.2.0",
+    "passport": "^0.2.2",
+    "passport-facebook": "^2.0.0",
+    "passport-google-oauth": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "requirejs": "^2.1.22"
+  },
+  "devDependencies": {
+    "debug": "2.0.0"
+  }
+}

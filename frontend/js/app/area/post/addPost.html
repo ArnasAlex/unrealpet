@@ -1,0 +1,120 @@
+<div class="container add-post">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <strong data-bind="mlt: 'post_add_header'"></strong>
+        </div>
+        <div class="panel-body">
+            <div data-bind="visible: mode() == 0" class="choose-post-type text-center">
+                <h3 data-bind="mlt: 'post_add_what_upload'"></h3>
+                <button data-bind="click: function(){setMode(2);}" class="btn btn-info btn-lg">
+                    <i class="fa fa-video-camera"></i> <span data-bind="mlt: 'post_add_video'"></span>
+                </button>
+                <button data-bind="click: function(){setMode(1);}" class="btn btn-success btn-lg">
+                    <i class="fa fa-camera"></i> <span data-bind="mlt: 'post_add_picture'"></span>
+                </button>
+            </div>
+            <div data-bind="fadeVisibleSwitcher: mode() == 1, with: picture" class="post-picture">
+                <div class="padding-top: 5px; padding-bottom: 5px; min-height: 200px;">
+                    <img data-bind="visible: isPictureUploaded(), attr: {src: picture()}" class="img-responsive img-rounded center-block" style="max-height: 600px" />
+                    <div data-bind="visible: !isPictureUploaded()" class="text-center" style="vertical-align: middle">
+                        <div style="margin-top: 20px;">
+                            <div>
+                                <div><i class="fa fa-camera fa-4x"></i></div>
+                                <div><h4 data-bind="mlt: 'post_add_picture_alt'"></h4></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div data-bind="visible: isPictureUploaded" class="text-center">
+                    <div class="picture-edit-panel center-block">
+                        <button data-bind="click: pictureEditRotateLeft" class="btn btn-primary"><i class="fa fa-rotate-left"></i></button>
+                        <button data-bind="click: pictureEditRotateRight" class="btn btn-primary"><i class="fa fa-rotate-right"></i></button>
+                    </div>
+                </div>
+                <hr class="compact"/>
+                <div>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="text-center">
+                                <upload-button params="{options: uploadOptions}"></upload-button>
+                                <span data-bind="mlt: 'post_add_or_fill_url', visible: !isPictureUploaded()" class="lead"></span>
+                                <button data-bind="visible: isPictureUploaded(), click: clearUploadedPicture" class="btn btn-info">
+                                    <i class="fa fa-link"></i>
+                                    <span data-bind="mlt: 'post_add_or_fill_url'"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="visible: !isPictureUploaded(), validationElement: model.pictureUrl">
+                            <label data-bind="mlt: 'post_add_url'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <span class="pull-right help-block" data-bind="validationMessage: model.pictureUrl"></span>
+                                <input data-bind="value: model.pictureUrl" type="url" class="form-control" placeholder="http://">
+                            </div>
+                        </div>
+                        <div class="form-group" data-bind="validationElement: model.title">
+                            <label data-bind="mlt: 'post_add_title'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <span class="pull-right help-block" data-bind="validationMessage: model.title"></span>
+                                <input data-bind="value: model.title" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div data-bind="fadeVisibleSwitcher: mode() == 2, with: video">
+                <div class="video-info-container">
+                    <div data-bind="visible: isVideoUploaded() && uploadOptions.progress() != 1" class="picture-container center-block">
+                        <div class='cover-container' data-bind="click: onCoverClick">
+                            <div>
+                                <i class="fa fa-play-circle-o fa-5x"></i>
+                            </div>
+                            <img data-bind="attr: {src: coverUrl()}" class="cover"/>
+                        </div>
+                        <video data-bind="attr: {poster: coverUrl()}" preload="none" id="addPostVideoContent" loop muted style="display:none">
+                            <source data-bind="attr: {src: model.videoUrl()}" type="video/mp4">
+                            Your browser is too old to support video.
+                        </video>
+                    </div>
+                    <div data-bind="visible: !isVideoUploaded() || uploadOptions.progress() == 1" class="text-center" style="vertical-align: middle">
+                        <div style="margin-top: 20px;">
+                            <div>
+                                <div><i data-bind="css: uploadIcon" class="fa fa-4x"></i></div>
+                                <div><h3 data-bind="text: uploadInfo"></h3></div>
+                                <div><h4 data-bind="mlt: 'post_add_video_info'" class="video-info"></h4></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="compact"/>
+                <div>
+                    <form class="form-horizontal">
+                        <div data-bind="validationElement: model.videoUrl" class="form-group">
+                            <div class="text-center">
+                                <upload-button params="{options: uploadOptions}"></upload-button>
+                                <span data-bind="visible: !model.videoUrl.isValid()" class="error-span">
+                                    <i class="fa fa-arrow-left"></i>
+                                    <span data-bind="validationMessage: model.videoUrl"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div data-bind="validationElement: model.title" class="form-group">
+                            <label data-bind="mlt: 'post_add_title'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <span class="pull-right help-block" data-bind="validationMessage: model.title"></span>
+                                <input data-bind="value: model.title" type="text" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div>
+                <button data-bind="click: function(){ mode() == 1 ? setMode(2) : setMode(1); }, visible: mode() !== 0" class="btn btn-warning pull-left"><i class="fa fa-arrow-left"></i> <span data-bind="text: backButtonText"></span></button>
+                <button data-bind="click: save, visible: mode() !== 0" class="btn btn-success pull-right"><i class="fa fa-save"></i> <span data-bind="mlt: 'post_add_btn_submit'"></span></button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

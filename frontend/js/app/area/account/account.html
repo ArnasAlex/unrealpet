@@ -1,0 +1,12 @@
+<div class="container">
+    <div class="row">
+        <div style="margin-top: 20px;">
+            <div class="pull-left" style="padding-left: 10px;">
+                <ul data-bind="foreach: tabs" class="nav nav-tabs">
+                    <li data-bind="css: {active: (id == $parent.activeTab().id)}" role="presentation"><a href="javascript:void(0)" data-bind="mlt: title, click: $parent.selectTab"></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div data-bind="compose: activeTab().viewName"></div>
+</div>

@@ -1,0 +1,1 @@
+{"version":3,"file":"jobDataEntity.js","sourceRoot":"","sources":["jobDataEntity.ts"],"names":["JobDataEntity","JobDataEntity.constructor"],"mappings":";;;;;;AAAA,IAAO,MAAM,WAAW,eAAe,CAAC,CAAC;AAEzC;IAAmCA,iCAAaA;IAC5CA;QACIC,iBAAOA,CAACA;IACZA,CAACA;IAULD,oBAACA;AAADA,CAACA,AAbD,EAAmC,MAAM,CAAC,MAAM,EAa/C;AAbY,qBAAa,gBAazB,CAAA;AAEU,sBAAc,GAAG,SAAS,CAAC;AA4BrC"}

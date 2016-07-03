@@ -1,0 +1,162 @@
+<div class="container game">
+    <div class="center-block game-buttons">
+        <div class="row">
+            <div class="col-xs-offset-1 col-xs-2">
+                <button data-bind="click: sectionButtonClick" class="btn btn-game-status" data-scroll="game-status">
+                    <i class="fa fa-list-ul"></i>
+                </button>
+            </div>
+            <div class="col-xs-2">
+                <button data-bind="click: sectionButtonClick" class="btn btn-warning" data-scroll="vote-game">
+                    <i class="fa fa-bolt"></i>
+                </button>
+            </div>
+            <div data-bind="if: isAuthenticated" class="col-xs-2">
+                <button data-bind="click: sectionButtonClick" class="btn btn-danger" data-scroll="game-fights">
+                    <i class="fa fa-certificate"></i>
+                </button>
+            </div>
+            <div class="col-xs-2">
+                <button data-bind="click: sectionButtonClick" class="btn btn-leader-board" data-scroll="leader-board">
+                    <i class="fa fa-trophy"></i>
+                </button>
+            </div>
+            <div class="col-xs-2">
+                <button data-bind="click: sectionButtonClick" class="btn btn-info" data-scroll="game-rules">
+                    <i class="fa fa-question"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div data-bind="with: player" class="player-picture row">
+        <div class="panel player-panel vote" id="game-status">
+            <div class="panel-heading">
+                <i class="fa fa-list-ul"></i> <span data-bind="mlt: 'game_game_status'"></span>
+            </div>
+            <div class="panel-body game">
+                <div data-bind="visible: isRegistered" class="player">
+                    <div data-bind="style: {'background-image': playerBackgroundImage}" class="image"></div>
+                    <div data-bind="click: openGift, visible: hasGift" class="gift">
+                        <i class="fa fa-gift"></i>
+                    </div>
+                </div>
+                <div data-bind="visible: !isRegistered()">
+                    <div>
+                        <div class="pet-type" data-bind="css: petTypeCss"></div>
+                    </div>
+                    <div class="not-registrated-explain">
+                        <span data-bind="mlt: 'game_start_explain1'"></span>
+                        <br />
+                        <span data-bind="mlt: 'game_start_explain2'"></span>
+                        <br />
+                        <span data-bind="mlt: 'game_start_explain3'"></span>
+                    </div>
+                </div>
+                <div class="row totals">
+                    <div class="col-xs-6 col-sm-3">
+                        <a class="btn btn-danger"> <span data-bind="mlt: 'game_defeat'"></span> <i class="fa fa-remove"></i> <span data-bind="text: defeats" class="badge"></span></a>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a class="btn btn-success"><span data-bind="mlt: 'game_win'"></span> <i class="fa fa-check"></i> <span data-bind="text: wins" class="badge"></span></a>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a class="btn btn-warning"><span data-bind="mlt: 'game_total_matches'"></span> <i class="fa fa-certificate"></i> <span data-bind="text: fights" class="badge"></span></a>
+                    </div>
+                    <div class="col-xs-6 col-sm-3">
+                        <a id="game-points" class="btn btn-black"><span data-bind="mlt: 'game_points'"></span> <i class="fa fa-dot-circle-o"></i> <span data-bind="text: points" class="badge"></span></span></a>
+                    </div>
+                </div>
+
+                <div class="status">
+                    <div data-bind="visible: isRegistered">
+                        <span class="place">
+                            <span data-bind="mlt: 'game_you_are'"></span>
+                            <b><i class="fa fa-trophy"></i><span data-bind="text: place"></span></b>
+                            <span data-bind="mlt: 'game_out_of'"></span> <span data-bind="text: totalPlayers"></span>
+                            <span data-bind="mlt: 'game_players'"></span>
+                        </span>
+                    </div>
+                    <div data-bind="visible: !isRegistered()">
+                        <b data-bind="text: totalPlayers"></b> <span data-bind="mlt: 'game_players_already_playing'"></span>
+                    </div>
+                    <div>
+                        <span>
+                            <span data-bind="mlt: 'game_status'"></span>:
+                            <b data-bind="text: statusText, css: {playing: status() == 1}" class="player-status"></b>
+                        </span>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="panel-footer">
+                <button data-bind="enable: isRegistered(), click: changePlayerStatus" class="btn btn-info">
+                    <i data-bind="css: playButtonIcon()" class="fa"></i> <span data-bind="text: playButtonText"></span>
+                </button>
+                <upload-button params="{options: uploadOptions}"></upload-button>
+            </div>
+        </div>
+    </div>
+
+    <vote-game params="{options: voteGameOptions}" id="vote-game"></vote-game>
+
+    <div data-bind="if: isAuthenticated">
+        <div data-bind="compose: {model: 'area/game/gameFights', activationData: fightControlOptions}"></div>
+    </div>
+
+    <div data-bind="with: leaderBoard" class="row">
+        <div class="panel leader-board" id="leader-board">
+            <div class="panel-heading">
+                <i class="fa fa-trophy"></i> <span data-bind="mlt: 'game_leader_board'"></span>
+                <button data-bind="click: refresh" class="btn btn-default pull-left"><i class="fa fa-refresh"></i></button>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div data-bind="foreach: list">
+                    <div data-bind="click: $parent.leaderClick" class="leader">
+                        <div data-bind="visible: !picture, css: petTypeClass" class="pet-type pull-left"></div>
+                        <div data-bind="visible: picture, style: {'background-image': 'url(\'' + picture + '\')' }" class="image pull-left"></div>
+                        <div data-bind="css: placeClass" class="pull-left place">
+                            <span><i class="fa fa-trophy"></i> <span data-bind="text: place"></span></span>
+                        </div>
+                        <div class="info">
+                            <div class="col-xs-4 col-sm-offset-1 name">
+                                <span data-bind="text: name"></span>
+                            </div>
+                            <div class="col-xs-4 points">
+                                <i class="fa fa-dot-circle-o"></i> <span data-bind="text: points"></span> <span data-bind="mlt: 'game_leader_board_points'" class="hidden-xs"></span>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer text-center">
+                <button data-bind="click: moreClick, visible: hasMore" class="btn btn-warning"><i class="fa fa-arrow-down"></i> <span data-bind="mlt: 'game_leader_board_more'"></span></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="rules row">
+        <div class="panel" id="game-rules">
+            <div class="panel-heading">
+                <i class="fa fa-question"></i> <span data-bind="mlt: 'game_how_to_play'"></span>
+            </div>
+            <div class="panel-body">
+                <ul>
+                    <li data-bind="mlt: 'game_rule1'"></li>
+                    <li data-bind="mlt: 'game_rule2'"></li>
+                    <li data-bind="mlt: 'game_rule3'"></li>
+                    <li data-bind="mlt: 'game_rule4'"></li>
+                    <li data-bind="mlt: 'game_rule5'"></li>
+                    <li data-bind="mlt: 'game_rule_fight_control'"></li>
+                    <li data-bind="mlt: 'game_rule_first_to_play'"></li>
+                    <li data-bind="mlt: 'game_rule_winner'"></li>
+                    <li data-bind="mlt: 'game_rule_energy'"></li>
+                    <li data-bind="mlt: 'game_rule6'"></li>
+                    <li data-bind="mlt: 'game_rule7'"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

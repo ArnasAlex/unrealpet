@@ -1,0 +1,102 @@
+<div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong data-bind="mlt: 'account_pictures'"></strong>
+            </div>
+            <div class="panel-body" style="padding-top: 5px; padding-bottom: 5px; min-height: 200px; ">
+                <div>
+                    <img data-bind="visible: upload.isPictureUploaded, attr: {src: upload.pictureDetails().url()}" class="img-responsive img-rounded center-block" style="max-height: 800px" />
+                    <div data-bind="visible: !upload.isPictureUploaded()" class="text-center" style="vertical-align: middle">
+                        <div style="margin-top: 20px;">
+                            <div>
+                                <div><i class="fa fa-smile-o fa-4x"></i></div>
+                                <div><h4 data-bind="mlt: 'account_upload_main_or_logo'"></h4></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <div class="pull-left">
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span data-bind="text: upload.pictureDetails().name"></span> <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a data-bind="click: function(){upload.changeSelectedPicture(2);}, mlt: 'account_logo'" href="javascript:void(0)"></a></li>
+                            <li><a data-bind="click: function(){upload.changeSelectedPicture(1);}, mlt: 'account_main_picture'" href="javascript:void(0)"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="pull-right">
+                    <button data-bind="click: removePicture, visible: upload.isPictureUploaded()" class="btn btn-danger"><i class="fa fa-trash"></i> <span data-bind="mlt: 'account_remove_picture'"></span></button>
+                    <upload-button params="{options: upload.options}"></upload-button>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong data-bind="mlt: 'account_pet_information'"></strong>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div data-bind="with: model">
+                        <div data-bind="validationElement: name" class="form-group">
+                            <label data-bind="mlt: 'account_name'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <span class="pull-right help-block" data-bind="validationMessage: name"></span>
+                                <input data-bind="value: name, placeholderMlt: 'account_name_placeholder'" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-bind="mlt: 'account_type'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <div>
+                                    <div class="center-block">
+                                        <div data-bind="foreach: $parent.petTypes">
+                                            <div data-bind="click: $parents[1].selectPetType, css: (isSelected() ? 'pet-type-selected' : 'pet-type-dim')" class="pull-left pet-type-container">
+                                                <div class="pet-type" data-bind="css: css"></div>
+                                                <div data-bind="text: name"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-bind="mlt: 'account_breed'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <input data-bind="value: breed" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-bind="mlt: 'account_birthday'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <input type="date" data-bind="value: birthday, placeholderMlt: 'account_birthday'" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-bind="mlt: 'account_about'" class="control-label col-sm-2"></label>
+                            <div class="col-sm-10">
+                                <textarea data-bind="value: about, placeholderMlt: 'account_about_placeholder'" class="form-control" rows="4" placeholder="Write something interesting or funny about your pet"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer">
+                <button data-bind="click: save" type="button" class="btn btn-primary pull-right">
+                    <i class="fa fa-save"></i>
+                    <span data-bind="mlt: 'account_save'"></span>
+                </button>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="unreal pet,unrealpet,pet,unreal,funny,fun,cat,dog,hamster,snake,animal,horse,parrot">
+    <meta name="description" content="Unreal Pet is a place for your unreal pet. Put your funny, interesting, cute pet photos - share, follow and have fun. Join UnrealPet now!">
+    <meta name="robots" content="noodp,nofollow">
+    <meta property="og:title" content="{{Title}}" />
+    <meta property="og:description" content="{{Description}}" />
+    <meta property="og:image" content="{{Image}}" />
+    <link rel="image_src" href="{{Image}}">
+    <meta property="og:site_name" content="UnrealPet">
+    <meta property="og:url" content="{{Url}}">
+    <meta property="fb:app_id" content="142031976164785">
+    <meta property="al:android:url" content="{{Url}}">
+    <title>Unreal Pet</title>
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+</head>
+<body>
+<script>
+
+    setTimeout(function() {
+        var qs = window.location.search;
+        qs = qs.split('+').join(' ');
+        var params = {},
+                tokens,
+                re = /[?&]?([^=]+)=([^&]*)/g;
+        while (tokens = re.exec(qs)) {
+            params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+        }
+
+        var baseUrl = window.location.protocol + '//' + window.location.host;
+        if (params.post){
+            window.location = baseUrl + '/#post/' + params.post;
+        }
+        else{
+            window.location = baseUrl;
+        }
+    });
+</script>
+</body>
+</html>
